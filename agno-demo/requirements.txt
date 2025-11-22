@@ -1,3 +1,4 @@
 agno>=2.0.0
 groq
 python-dotenv
+duckduckgo-search

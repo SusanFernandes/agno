@@ -1,6 +1,6 @@
 # Agno Demo: Simple AI Agent with Groq
 
-A minimal demo of [Agno](https://github.com/agno-agi/agno) integrated with [Groq](https://console.groq.com/) for fast LLM inference.
+A minimal demo of [Agno](https://github.com/agno-agi/agno) integrated with [Groq](https://console.groq.com/) for fast LLM inference. Includes a single-agent example and a multi-agent team demo.
 
 ## Quick Start
 
@@ -18,15 +18,21 @@ python -m venv .venv
 source .venv/bin/activate  # Windows: .venv\Scripts\activate
 
 pip install -r requirements.txt
+```
 
 Create a `.env` file and add your API key:
+```
 GROQ_API_KEY=your-key-here
 ```
 
 ### Run
 
 ```bash
+# Single agent
 python start.py
+
+# Multi-agent team (Researcher + Writer)
+python multiagent.py
 ```
 
 ## Project Structure
@@ -35,27 +41,31 @@ python start.py
 agno-demo/
 ├── requirements.txt   # Dependencies
 ├── .env.example       # API key template
-├── agent.py           # Agent definition
-├── start.py           # Entry point
+├── agent.py           # Single agent definition
+├── multiagent.py      # Multi-agent team (Researcher + Writer)
+├── start.py           # Single agent entry point
 └── README.md
 ```
 
 ## Customization
 
-**Change model** — Edit `agent.py`:
+**Change model** — Edit `agent.py` or `multiagent.py`:
 ```python
 id="llama-3.3-70b-versatile"  # See https://console.groq.com/docs/models
 ```
 
-**Change prompt** — Edit `start.py`:
+**Change prompt** — Edit `start.py` or `multiagent.py`:
 ```python
-prompt = "Your new prompt here"
+prompt = "Your new prompt here"  # single agent
+topic = "Your collaborative task here"  # multi-agent
 ```
 
-**Interactive mode** — Add to `start.py`:
+**Add tools** — In `multiagent.py`:
 ```python
-prompt = input("Enter your query: ")
+researcher.tools = [DuckDuckGoTools()]  # requires duckduckgo-search
 ```
+
+**Extend multi-agent** — Add agents to `Team` or change `mode` to `"route"` or `"coordinate"`. See [Agno Teams](https://docs.agno.com/introduction/multi-agent-systems).
 
 ## Troubleshooting
 
