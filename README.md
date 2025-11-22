@@ -11,7 +11,7 @@ A minimal demo of [Agno](https://github.com/agno-agi/agno) integrated with [Groq
 ### Setup
 
 ```bash
-git clone https://github.com/your-username/agno-demo.git
+git clone https://github.com/SusanFernandes/agno-demo.git
 cd agno-demo
 
 python -m venv .venv
